@@ -5,6 +5,8 @@ authors = ["Nick Zana <me@nickzana.dev>"]
 edition = "2018"
 
 [features]
+default = ["video"]
+
 mp4 = []
 mkv = []
 video = ["mp4", "mkv"]

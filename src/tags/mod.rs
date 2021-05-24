@@ -1,8 +1,11 @@
 use rocket_contrib::json::Json;
 use serde::{Deserialize, Serialize};
+use crate::media_type::MediaType;
 
 #[derive(Serialize, Deserialize)]
-pub struct Tag {}
+pub struct Tag {
+    types: Vec<MediaType>,
+}
 
 #[derive(Serialize, Deserialize)]
 pub struct GetTagsResponse {
@@ -16,15 +19,15 @@ pub fn get_tags() -> Json<GetTagsResponse> {
 
 #[cfg(test)]
 mod tests {
+    use rocket::local::LocalResponse;
+
     #[test]
     fn check_get_tags() {
-        use super::GetTagsResponse;
         use crate::rocket;
         use rocket::local::Client;
-        use rocket_contrib::json::Json;
 
-        let client = Client::new(rocket()).expect("Could not create Rocket instance.");
-        let mut response = client.get("/v1/tags").dispatch();
+        let client: Client = Client::new(rocket()).expect("Could not create Rocket client.");
+        let mut response: LocalResponse = client.get("/v1/tags").dispatch();
         assert_eq!(response.body_string(), Some(r#"{"tags":[]}"#.into()));
     }
 }

@@ -1,3 +1,14 @@
+#![feature(proc_macro_hygiene, decl_macro)]
+
+#[macro_use] extern crate rocket;
+
+mod tags;
+use tags::*;
+
+pub fn rocket() -> rocket::Rocket {
+    rocket::ignite().mount("/v1", routes![get_tags])
+}
+
 fn main() {
-    println!("Hello, world!");
+    rocket().launch();
 }

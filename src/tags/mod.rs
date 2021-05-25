@@ -1,6 +1,6 @@
+use crate::media_type::MediaType;
 use rocket_contrib::json::Json;
 use serde::{Deserialize, Serialize};
-use crate::media_type::MediaType;
 
 #[derive(Serialize, Deserialize)]
 pub struct Tag {

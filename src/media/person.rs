@@ -1,9 +1,9 @@
+use super::role::Role;
 use crate::media::thumbnail::Thumbnail;
 use serde::{Deserialize, Serialize};
-use std::marker::PhantomData;
 
-#[derive(Serialize, Deserialize)]
-pub struct Person<Role> {
+#[derive(Deserialize, Serialize)]
+pub struct Person {
     pub order: Option<i32>,
     pub name: Option<String>,
     pub role: Option<Role>,

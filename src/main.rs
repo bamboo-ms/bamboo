@@ -1,12 +1,12 @@
 #![feature(proc_macro_hygiene, decl_macro)]
-
 #[macro_use]
 extern crate rocket;
 
-mod media;
-mod media_type;
 #[cfg(feature = "music")]
 mod music;
+
+mod media;
+mod media_type;
 mod tags;
 
 use tags::*;

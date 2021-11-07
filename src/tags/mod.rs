@@ -1,9 +1,11 @@
 use crate::media_type::MediaType;
 use rocket_contrib::json::Json;
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 
 #[derive(Serialize, Deserialize)]
 pub struct Tag {
+    id: Uuid;
     types: Vec<MediaType>,
 }
 

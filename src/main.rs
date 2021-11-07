@@ -5,11 +5,7 @@ extern crate rocket;
 #[cfg(feature = "music")]
 mod music;
 
-mod media;
 mod media_type;
-mod tags;
-
-use tags::*;
 
 pub fn rocket() -> rocket::Rocket {
     rocket::ignite().mount("/v1", routes![get_tags])
